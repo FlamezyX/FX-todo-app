@@ -1,5 +1,3 @@
-USE fx_todo;
-
 CREATE TABLE IF NOT EXISTS tasks (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
