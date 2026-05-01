@@ -13,7 +13,6 @@ app.use(cors({
     'http://localhost:5174',
     'https://fx-todo-app.vercel.app',
   ],
-  credentials: true,
 }));
 app.use(express.json());
 

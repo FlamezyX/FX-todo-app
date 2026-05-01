@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'https://fx-todo-app.onrender.com/api',
-  withCredentials: true,
 });
 
 api.interceptors.request.use((config) => {
