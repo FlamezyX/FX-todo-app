@@ -33,8 +33,8 @@ const SidebarContent = ({ onClose }) => {
   };
 
   return (
-    <aside data-tour="sidebar" className="glass neon-border h-full w-64 flex flex-col p-6">
-      <div className="flex items-center justify-between mb-10">
+    <aside data-tour="sidebar" className="glass neon-border h-full w-64 flex flex-col p-6 overflow-y-auto">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="neon-text text-2xl font-bold tracking-widest">FX TODO</h1>
           <p className="text-xs text-slate-500 mt-1">Productivity System</p>
@@ -44,7 +44,7 @@ const SidebarContent = ({ onClose }) => {
         )}
       </div>
 
-      <nav className="flex flex-col gap-2 flex-1">
+      <nav className="flex flex-col gap-1 flex-1">
         {navItems.map(({ to, icon, label, tour }) => (
           <NavLink
             key={to}
@@ -52,7 +52,7 @@ const SidebarContent = ({ onClose }) => {
             data-tour={tour}
             onClick={onClose}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${
+              `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all duration-200 ${
                 isActive
                   ? 'bg-violet-600/20 neon-border text-violet-300'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
@@ -65,8 +65,8 @@ const SidebarContent = ({ onClose }) => {
         ))}
       </nav>
 
-      <div className="mt-auto pt-6 border-t border-white/10">
-        <div data-tour="xp-bar" className="mt-3 mb-2">
+      <div className="pt-4 border-t border-white/10 mt-4">
+        <div data-tour="xp-bar" className="mb-3">
           <div className="flex justify-between text-xs text-slate-500 mb-1">
             <span className="neon-text font-semibold">Lvl {gProfile?.level ?? user?.level ?? 1}</span>
             <span>{gProfile?.xp ?? user?.xp ?? 0} XP</span>
@@ -78,13 +78,13 @@ const SidebarContent = ({ onClose }) => {
             />
           </div>
         </div>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-9 h-9 rounded-full bg-violet-600 flex items-center justify-center text-sm font-bold">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-9 h-9 rounded-full bg-violet-600 flex items-center justify-center text-sm font-bold flex-shrink-0">
             {user?.username?.[0]?.toUpperCase() || 'U'}
           </div>
-          <div>
-            <p className="text-sm text-slate-200">{user?.username || 'User'}</p>
-            <p className="text-xs text-slate-500">{user?.email || ''}</p>
+          <div className="min-w-0">
+            <p className="text-sm text-slate-200 truncate">{user?.username || 'User'}</p>
+            <p className="text-xs text-slate-500 truncate">{user?.email || ''}</p>
           </div>
         </div>
         {canInstall && (
